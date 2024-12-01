@@ -11,6 +11,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const htmlmin = require('gulp-htmlmin');
 const newer = require('gulp-newer');
 const browsersync = require('browser-sync').create();
+const plumber = require('gulp-plumber');
 
 // Пути до папки dist
 const path = {
@@ -42,6 +43,7 @@ async function html() {
     const size = (await import('gulp-size')).default;
 
     return gulp.src(path.html.src)
+        .pipe(plumber({ errorHandler: handleError }))
         .pipe(htmlmin({ collapseWhitespace: true }))
         .pipe(size())
         .pipe(gulp.dest(path.html.dest))
@@ -54,7 +56,8 @@ async function styles() {
     const size = (await import('gulp-size')).default;
 
     return gulp.src(path.styles.src)
-        .pipe(sass().on('error', sass.logError))
+        .pipe(plumber({ errorHandler: handleError }))
+        .pipe(sass({ silent: true }).on('error', sass.logError))
         .pipe(autoprefixer.default({
             cascade: false,
             overrideBrowserslist: ["> 0.5%", "last 3 versions"]
@@ -76,6 +79,7 @@ async function scripts() {
     const size = (await import('gulp-size')).default;
 
     return gulp.src(path.scripts.src, { sourcemaps: true })
+        .pipe(plumber({ errorHandler: handleError }))
         .pipe(sourcemaps.init())
         .pipe(babel({ presets: ['@babel/env'] }))
         .pipe(uglify().on('error', handleError))
@@ -96,10 +100,9 @@ async function img() {
     const svgo = (await import('imagemin-svgo')).default;
     const size = (await import('gulp-size')).default;
 
-    return gulp.src(path.images.src,  {
-        encoding: false
-    })
+    return gulp.src(path.images.src)
         .pipe(newer(path.images.dest))
+        .pipe(plumber({ errorHandler: handleError }))
         .pipe(imagemin([
             gifsicle({interlaced: true}),
             mozjpeg({quality: 75, progressive: true}),
@@ -107,14 +110,7 @@ async function img() {
             webp({ quality: 75 }),
             svgo({
                 plugins: [
-                    {
-                        name: 'removeViewBox',
-                        active: true
-                    },
-                    {
-                        name: 'cleanupIDs',
-                        active: false
-                    }
+                    { name: 'removeViewBox', active: true }
                 ]
             })
         ]))
