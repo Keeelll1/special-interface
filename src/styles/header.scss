@@ -1,0 +1,46 @@
+@use 'colors';
+@use 'mixins';
+
+.header{
+    padding: 34px 0 34px 0;
+
+    &__wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__info{
+        display: flex;
+        gap: 12px;
+        align-items: center;
+
+        .title{
+            @include mixins.title;
+        }
+    }
+
+    &__content{
+        display: flex;
+        gap: 16px;
+        align-items: center;
+
+        .notification{
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            cursor: pointer;
+        }
+
+        .user__icon{
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    }
+}

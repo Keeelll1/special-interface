@@ -1,0 +1,357 @@
+@use 'colors';
+@use 'mixins';
+
+.main__content{
+    display: flex;
+    gap: 32px;
+
+    &-left{
+        padding-right: 44px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border-right: 1px solid var(--light-gray);
+        height: 1080px;
+
+        .content__btn{
+            background-color: var(--white);
+            width: 223px;
+            height: 48px;
+            padding: 12px 24px;
+            display: flex;
+            gap: 13px;
+            align-items: center;
+            cursor: pointer;
+
+            .content__btn-text{
+                @include mixins.leftText;
+            }
+        }
+
+        .active__btn{
+            background-color: var(--light-gray);
+        }
+    }
+
+    &-right-first{
+        width: 100%;
+        display: flex;
+        gap: 32px;
+        flex-direction: column;
+
+        .top__content{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            &-name{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                &-wrapper{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+
+                    .title{
+                        @include mixins.title;
+                    }
+
+                    &-info{
+                        @include mixins.addInfWrapper;
+
+                        &-text{
+                            @include mixins.addInfText;
+                        }
+                    }
+                }
+
+                .subtitle{
+                    @include mixins.subtitle;
+                }
+            }
+        }
+
+        .cards__wrapper{
+            display: flex;
+            justify-content: space-between;
+
+            .card__content{
+                width: 273px;
+                padding: 16px;
+                @include mixins.borders;
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                &-top{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    &-text{
+                        @include mixins.cardTopText;
+                    }
+
+                    &-img{
+                        cursor: pointer;
+                    }
+                }
+
+                &-main{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    .title{
+                        @include mixins.title;
+                    }
+
+                    .subtitle{
+                        @include mixins.subtitleCard;
+                    }
+                }
+            }
+        }
+
+        .table__content{
+            padding: 24px;
+            @include mixins.borders;
+
+            &-top{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 24px;
+
+                .title{
+                    @include mixins.title;
+                }
+
+                &-btn{
+                    @include mixins.btn;
+                }
+            }
+
+            .table{
+                width: 100%;
+                border-collapse: collapse;
+
+                .table__row {
+                    border-top: 1px solid var(--blue-light);
+            
+                    .table__title{
+                        @include mixins.tableTitle;
+                        font-size: 13px;
+                    }
+
+                    .table__text{
+                        @include mixins.tableTitle;
+                        font-size: 14px;
+                    }
+
+                    .table__status{
+                        @include mixins.addInfWrapper;
+                        background-color: var(--light-gray);
+
+                        .table__status-text{
+                            font-size: 13px;
+                            color: var(--dark-gray);
+                        }
+                    }
+
+                    .table__status-comp{
+                        background-color: var(--green-light);
+                        
+                        .table__status-text-comp{
+                            color: var(--succes-accent);
+                        }
+                    }
+
+                    .table__status-err{
+                        background-color: var(--error-light);
+                        
+                        .table__status-text-err{
+                            color: var(--error);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-right-second{
+        display: none;
+
+        .top__content{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            &-name{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                &-wrapper{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+
+                    .title{
+                        @include mixins.title;
+                    }
+                }
+
+                .top__content-value-wrapper{
+                    display: flex;
+                    gap: 12px;
+
+                    .top__content-value-content{
+                        display: flex;
+                        gap: 8px;
+                        align-items: center;
+
+                        .subtitle{
+                            @include mixins.subtitle;
+                        }
+                    }
+                }
+            }
+        }
+
+        .vacation__date{
+            display: flex;
+            gap: 24px;
+            margin-top: 24px;
+
+            &-wrapper{
+                display: flex;
+                gap: 12px;
+            }
+
+            &-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 200px;
+                padding: 8px 16px;
+                background-color: var(--white);
+                border: 1px solid var(--blue-light);
+                border-radius: 12px;
+                cursor: pointer;
+                position: relative;
+
+                &-img{
+                    width: 7px;
+                    height: 12px;
+                }
+
+                &-text{
+                    font-size: 14px;
+                }
+
+                &-content{
+                    background-color: var(--blue-light);
+                    padding: 0 6px;
+                    border-radius: 5px;
+                    position: absolute;
+                    top: -12px;
+                    left: 12px;
+
+                    &-text{
+                        color: var(--accent);
+                        line-height: 18px;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            &-btn{
+                border: 1px solid var(--blue-light);
+                background-color: var(--white);
+                padding: 10px 14px;
+                border-radius: 6px;
+                color: var(--secondary);
+                font-weight: 600;
+            }
+        }
+
+        .warnings{
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+
+            &__item{
+                display: flex;
+                align-items: center;
+                gap: 7px;
+
+                &-text-error,
+                &-text-succes,
+                &-text-warning{
+                    color: var(--secondary);
+                    position: relative;
+                    line-height: 24px;
+                    margin-left: 32px;
+                }
+
+                &-text-error::before{
+                    @include mixins.warningBeforeError;
+                }
+
+                &-text-succes::before{
+                    @include mixins.warningBeforeSucces;
+                }
+
+                &-text-warning::before{
+                    @include mixins.warningBeforeWarning;
+                }
+            }
+        }
+
+        .vacation__table{
+            margin-top: 16px;
+
+            &-wrapper{
+                width: 100%;
+                border-collapse: collapse;
+
+                .table__cell-first{
+                    width: 221px;
+                    height: 40px;
+                    border-top: 1px solid var(--stroke);
+
+                    &-text,
+                    &-text-warning{
+                        font-size: 16px;
+                        line-height: 24px;
+                        color: var(--primary);
+                        font-weight: 500;
+                        margin-left: 32px;
+                        position: relative;
+                    }
+
+                    &-text::before{
+                        @include mixins.warningBeforeSucces;
+                    }
+
+                    &-text-warning::before{
+                        @include mixins.warningBeforeWarning;
+                    }
+                }
+
+                .table__cell{
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid var(--stroke);
+                    text-align: center;
+
+                    &-custom{
+                        background-color: var(--strokeCell);
+                    }
+                }
+            }
+        }
+    }
+}

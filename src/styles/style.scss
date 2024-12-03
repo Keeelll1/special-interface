@@ -1,3 +1,14 @@
+// Шрифты
+@use 'fonts';
+
+// Основные стили
+@use 'main';
+
+// header
+@use 'header.scss';
+
+// Основной контент
+@use 'basicContent.scss';
 
 
 

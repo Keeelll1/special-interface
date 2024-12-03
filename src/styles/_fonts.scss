@@ -1,0 +1,15 @@
+@font-face {
+    font-family: 'SF Pro Display';
+    src: url('./fonts/SF-Pro-Display-Regular.woff2') format('woff2'), /* Regular weight */
+         url('./fonts/SF-Pro-Display-Regular.woff') format('woff'); /* Regular weight fallback */
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: url('./fonts/SF-Pro-Display-Bold.woff2') format('woff2'), /* Bold weight */
+         url('./fonts/SF-Pro-Display-Bold.woff') format('woff'); /* Bold weight fallback */
+    font-weight: bold;
+    font-style: normal;
+  }
